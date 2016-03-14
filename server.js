@@ -16,15 +16,15 @@ var express = require("express"),
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
-app.set("port", (process.env.PORT || 9000));
+app.set("port", (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
 app.use(session({
-    secret: "fuck you",
-    resave: true,
-    saveUninitialized: true
+    secret: "fuck",
+    resave: false,
+    saveUninitialized: false
 
 }));
 app.use(passport.initialize());

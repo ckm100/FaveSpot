@@ -10,19 +10,19 @@ module.exports = function (app, passport, User, yelp, Location) {
 
     });
 
-    app.get('/auth/twitter', passport.authenticate('twitter'));
+    app.get("/auth/twitter", passport.authenticate("twitter"));
 
     app.get("/auth/twitter/callback", function (req, res, next) {
-
+        
         passport.authenticate("twitter", function (err, user, info) {
-
+            
             if (err) {
-
+                
                 res.end("Something went wrong please try logging in again, if problem persist you can please contact me at kufogbemawuli1@gmail.com");
             }
 
             if (!user) {
-
+                
                 res.end("Something went wrong please try logging in again, if problem persist you can please contact me at kufogbemawuli1@gmail.com");
 
             } else {
@@ -30,7 +30,7 @@ module.exports = function (app, passport, User, yelp, Location) {
                 req.login(user, function (err) {
 
                     if (err) {
-
+                        
                         res.end("Something went wrong please try logging in again, if problem persist you can please contact me at kufogbemawuli1@gmail.com");
 
                     } else {
@@ -40,33 +40,30 @@ module.exports = function (app, passport, User, yelp, Location) {
                             User.findOne({
                                 _id: req.user._id
                             }, function (err, doc) {
-
+                                
                                 if (err) {
-
+                                    
                                     res.end("Something went wrong please try logging in again, if problem persist you can please contact me at kufogbemawuli1@gmail.com");
 
                                 } else {
 
                                     if (doc.lastSearch !== "" && searchBeforeTwitterLogin === "") {
-
+                                        
                                         res.redirect("/");
 
                                     } else if (doc.lastSearch === "" && searchBeforeTwitterLogin === "") {
-
                                         res.redirect("/");
 
                                     } else if (doc.lastSearch === "" && searchBeforeTwitterLogin !== "") {
-
                                         doc.lastSearch = searchBeforeTwitterLogin;
 
                                         doc.save(function (err) {
 
                                             if (err) {
-
+                                                
                                                 res.end("Something went wrong please try logging in again, if problem persist you can please contact me at kufogbemawuli1@gmail.com");
 
                                             } else {
-
                                                 res.redirect("/");
                                             }
 
@@ -86,7 +83,6 @@ module.exports = function (app, passport, User, yelp, Location) {
         })(req, res, next);
 
     });
-
 
     app.post("/location", function (req, res) {
 
@@ -367,13 +363,13 @@ module.exports = function (app, passport, User, yelp, Location) {
     app.get("/", function (req, res, next) {
 
         if (req.isAuthenticated()) {
-
+            
             if (req.user.lastSearch !== "") {
 
                 Location.findOne({
                     location: req.user.lastSearch
                 }, function (err, data) {
-
+                    
                     res.render("index", {
                         isAuth: true,
                         isLastSearch: true,
