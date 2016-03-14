@@ -1,0 +1,36 @@
+{
+    "name": "favespot",
+    "version": "0.0.1",
+    "description": "FaveSpot Is An App That Let You View All Bars At Your Location, See The Number Of People Going To That Bar, Choose A Bar You Are Going",
+    "main": "server.js",
+    "dependencies": {
+        "bcrypt-nodejs": "^0.0.3",
+        "body-parser": "^1.15.0",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.1",
+        "cookie-session": "^2.0.0-alpha.1",
+        "ejs": "^2.3.2",
+        "express": "^4.13.1",
+        "express-session": "^1.13.0",
+        "mongoose": "^4.0.8",
+        "passport": "^0.3.2",
+        "passport-local": "^1.0.0",
+        "passport-twitter": "^1.0.4",
+        "yelp": "^1.0.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ckm100/FaveSpot"
+    },
+    "author": "Mawuli Kufogbe",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ckm100/FaveSpot/issues"
+    },
+    "homepage": "http://favespot.herokuapp.com"
+}
