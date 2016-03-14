@@ -13,40 +13,28 @@ module.exports = function (passport, User) {
                 twitterId: profile.id
             }, function (err, user) {
                 if (err) {
-
                     return done(err);
-
                 } else {
 
                     if (user) {
-
                         done(null, user);
-
                     } else {
 
                         var user = new User({
-
                             uname: profile.displayName.split(" ")[0],
                             twitterId: profile.id
-
                         });
 
                         user.save(function (err, data) {
 
                             if (err) {
-
                                 return done(err)
-
                             } else {
-
                                 return done(null, user);
-
                             }
 
                         });
-
                     }
-
                 }
 
             });
