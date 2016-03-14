@@ -361,7 +361,7 @@ module.exports = function (app, passport, User, yelp, Location) {
     });
 
     app.get("/", function (req, res, next) {
-
+        
         if (req.isAuthenticated()) {
             
             if (req.user.lastSearch !== "") {
